@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css" media="all" />
+
+    <script src="/static/js/jquery.ui.hex_input.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/static/css/jquery.ui.hex_input.css" type="text/css" media="all" />
+
+    <style>
+      input {
+        margin: 10px;
+        padding: 5px;
+      }
+    </style>
+    <script>
+      $(document).ready(function() {
+        $('#hex-input1').hexInput({
+          value: 'f',
+          digits: 2,
+          zero_based: false,
+        });
+
+        $('#hex-input2').hexInput({
+          value: '0xf',
+          digits: 6,
+        });
+
+        $('#hex-input3').hexInput({
+          value: '0xb00b1e',
+          digits: 14,
+        });
+
+
+        $('#hex-input4').hexInput({
+          value: '0x123456789abcde',
+          digits: 18,
+        });
+
+        $('#hex-input5').hexInput({
+          value: '0x123456789abcde',
+          digits: 26,
+        });
+
+        $('#hex-input6').hexInput({
+          value: 'fffffff',
+          onChange: function(e) {
+            console.log('changed');
+          },
+        });
+      });
+    </script>
+    <title>hexInput</title>
+  </head>
+
+  <body>
+    <div><input type='text' id='hex-input1' /></div>
+    <div><input type='text' id='hex-input2' /></div>
+    <div><input type='text' id='hex-input3' /></div>
+    <div><input type='text' id='hex-input4' /></div>
+    <div><input type='text' id='hex-input5' /></div>
+    <div><input type='text' id='hex-input6' /></div>
+  </body>
+
+</html>
