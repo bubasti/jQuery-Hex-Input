@@ -42,10 +42,15 @@ $(function() {
           .addClass('custom-hexInput ui-widget'));
 
            if (this_element.options.spinner) {
+            var maxes = new Array(this.options.digits);
+            for (var i = 0; i < maxes.length; i++) maxes[i] = 'f';
+            var this_max = parseInt('0x' + maxes.join(''));
+
             $this_element
               .spinner(
                 $.extend(true, {}, this_element.options.spinner_opts, {
                     min: 0,
+                    max: this_max,
                 })
               )
               .on('spin', function(e, u) {
