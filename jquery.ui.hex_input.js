@@ -7,6 +7,8 @@ $(function() {
       value: 0,
       digits: 8,
       zero_based: true,
+      spinner: true,
+      spinner_opts: {},
  
       // callbacks
       onChange: null,
@@ -30,14 +32,27 @@ $(function() {
       var this_element = this;
       var $this_element = (this.element)
         // add a class for theming
-        .addClass( 'custom-hexInput-input ui-widget ui-widget-content ui-state-default' )
+        .addClass( 'custom-hexInput-input' )
         .change(function(e) {
           this_element._setOption('value', $(this).val());
         });
 
       $this_element
         .wrap($( document.createElement('span'))
-          .addClass('custom-hexInput'));
+          .addClass('custom-hexInput ui-widget'));
+
+           if (this_element.options.spinner) {
+            $this_element
+              .spinner(
+                $.extend(true, {}, this_element.options.spinner_opts, {
+                    min: 0,
+                })
+              )
+              .on('spin', function(e, u) {
+                this_element._setOption('value', u.value);
+                return false;
+            });
+          }
 
       this.this_wrapper = $this_element.parent();
 
@@ -50,7 +65,7 @@ $(function() {
           .addClass('custom-hexInput-hexInputGroup')
 
         $( document.createElement('input'))
-          .addClass('custom-hexInput-hexInput ui-widget ui-widget-content ui-state-default')
+          .addClass('custom-hexInput-hexInput')
           .data('hexIndex', ii)
           .attr('type', 'text')
           .appendTo($this_group)
@@ -154,6 +169,12 @@ $(function() {
       var $this_element = (this.element);
 
       this._trigger('beforeExpand');
+      $this_element
+        .parents('.ui-spinner')
+        .removeClass('ui-widget-content')
+        .find('a.ui-spinner-button')
+        .hide();
+
       this_element.hex_expander.hide();
       $this_element.hide('fade', function() {
         var this_hex_str = $this_element.val().split('0x')[1].split('').reverse().join('');
@@ -180,14 +201,13 @@ $(function() {
       this._trigger('beforeCollapse');
       this_element.hex_wrapper.hide(
         'fade',
-        //'size', { 
-        //  to: { 
-        //    width: $this_element.outerWidth(),
-        //    height: $this_element.outerHeight(),
-        //  }
-        //}, 
-        //500,
         function() {
+          $this_element
+            .parents('.ui-spinner')
+            .addClass('ui-widget-content')
+            .find('a.ui-spinner-button')
+            .show();
+
           this_element._trigger('afterCollapse');
 
           replaceAt = function(str, index, char) {

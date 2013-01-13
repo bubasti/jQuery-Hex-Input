@@ -13,7 +13,6 @@ span.custom-hexInput label.custom-hexInput-hexInputLabel {
   text-align: center;
   font-size: 70%;
   opacity: 0.5;
-  margin-top: -8px;
 }
 
 span.custom-hexInput div.custom-hexInput-hexInputGroup {
@@ -21,7 +20,7 @@ span.custom-hexInput div.custom-hexInput-hexInputGroup {
 }
 
 span.custom-hexInput span.custom-hexInput-hexExpand {
-  left: -32px;
+  left: -20px;
 }
  
 span.custom-hexInput span.custom-hexInput-hexExpand, 
@@ -32,7 +31,6 @@ span.custom-hexInput span.custom-hexInput-hexCollapse {
 }
 
 span.custom-hexInput span.custom-hexInput-hexCollapse {
-  top: -26px;
 }
 
 span.custom-hexInput span.ui-icon {
