@@ -154,24 +154,30 @@ $(function() {
     _refresh: function() {
       var norm_val = this.options.value.toString(16);
 
-      if (norm_val.indexOf('0x') !== -1) {
-        norm_val = norm_val.split('0x')[1];
-      }
+      norm_val = norm_val.replace('0x', '');
 
       if (norm_val.length < this.options.digits) {
         zeros = new Array(this.options.digits - norm_val.length);
         for (var i = 0; i < zeros.length; i++) zeros[i] = 0;
         norm_val = zeros.concat(norm_val.split('')).join('');
       } else if (norm_val.length > this.options.digits) {
-        zeros = new Array(this.options.digits);
-        for (var i = 0; i < zeros.length; i++) zeros[i] = 0;
-        norm_val = zeros.join('');
+        maxes = new Array(this.options.digits);
+        for (var i = 0; i < maxes.length; i++) maxes[i] = 'f';
+        norm_val = maxes.join('');
       }
-      this.element.val('0x' + norm_val);
+
+      norm_val = '0x' + norm_val;
+
+      if (this.expanded) {
+        this._updateHexInputs(norm_val);
+      } else {
+        this.element.val(norm_val);
+      }
     },
     _expand: function() {
       var this_element = this;
       var $this_element = (this.element);
+      this_element.expanded = true;
 
       this._trigger('beforeExpand');
       $this_element
@@ -182,26 +188,33 @@ $(function() {
 
       this_element.hex_expander.hide();
       $this_element.hide('fade', function() {
-        var this_hex_str = $this_element.val().split('0x')[1].split('').reverse().join('');
-        this_element._trigger('afterExpand');
-        this_element.hex_wrapper
-          .show('fade')
-          .css('display', 'inline-block')
-          .find('input.custom-hexInput-hexInput')
-          .each(function(ii, elem) {
-            var $this_elem = $(elem);
-            var this_ndx = $this_elem.data('hexIndex');
-            if (this_hex_str[this_ndx]) {
-              $this_elem.val((parseInt(this_hex_str[this_ndx], 16) || 0).toString(16));
-            } else {
-              $this_elem.val(0);
-            }
-          });
+        this_element._updateHexInputs($this_element.val());
       });
+    },
+    _updateHexInputs: function(val) {
+      var this_element = this;
+      var $this_element = (this.element);
+      var this_hex = this._makeHexArray(val) || val;
+
+      this_element._trigger('afterExpand');
+      this_element.hex_wrapper
+        .show('fade')
+        .css('display', 'inline-block')
+        .find('input.custom-hexInput-hexInput')
+        .each(function(ii, elem) {
+          var $this_elem = $(elem);
+          var this_ndx = $this_elem.data('hexIndex');
+          if (this_hex[this_ndx]) {
+            $this_elem.val((parseInt(this_hex[this_ndx], 16) || 0).toString(16));
+          } else {
+            $this_elem.val(0);
+          }
+        });
     },
     _collapse: function() {
       var this_element = this;
       var $this_element = (this.element);
+      this_element.expanded = false;
 
       this._trigger('beforeCollapse');
       this_element.hex_wrapper.hide(
@@ -215,24 +228,34 @@ $(function() {
 
           this_element._trigger('afterCollapse');
 
-          replaceAt = function(str, index, char) {
-             return str.substr(0, index) + char + str.substr(index+char.length);
-          };
+          var this_hex = this_element.hex_wrapper.find('input.custom-hexInput-hexInput').map(function() {
+            return (parseInt($(this).val(), 16) || 0).toString(16);
+          }).get();
 
-          var this_hex_str = new Array(this_element.options.digits);
-          this_element.hex_wrapper
-            .find('input.custom-hexInput-hexInput')
-            .each(function(ii, elem) {
-              var this_ndx = $(elem).data('hexIndex');
-              this_hex_str[this_ndx] = (parseInt($(elem).val(), 16) || 0).toString(16);
-            });
-
-          this_element._setOption('value', this_hex_str.reverse().join(''));
+          this_element._setOption('value', this_element._makeHexStr(this_hex));
 
           $this_element.show('fade');
           this_element.hex_expander.show();
         }
       );
+    },
+    _makeHexArray: function(hex_str) {
+      if (typeof hex_str === 'string') {
+        return hex_str.replace('0x', '').split('').reverse();
+      } else {
+        return false;
+      }
+    },
+    _makeHexStr: function(hex_array, reverse) {
+      if ($.isArray(hex_array)) {
+        if (reverse) {
+          return '0x' + hex_array.reverse().join('');
+        } else {
+          return '0x' + hex_array.join('');
+        }
+      } else {
+        return false;
+      }
     },
   });
 });
