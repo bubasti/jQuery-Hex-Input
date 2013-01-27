@@ -54,6 +54,7 @@ $(function() {
                 })
               )
               .on('spin', function(e, u) {
+                this_element._trigger('onChange', e);
                 this_element._setOption('value', u.value);
                 return false;
             });
@@ -85,7 +86,7 @@ $(function() {
               }
               $(this).val(((this_val)%16).toString(16));
 
-              this_element._trigger('onChange');
+              this_element._trigger('onChange', e);
 
             } else if (e.which === 13) {
               $(this).parent().next().find('.custom-hexInput-hexInput').focus().select();
