@@ -41,7 +41,7 @@ $(function() {
         .wrap($( document.createElement('span'))
           .addClass('custom-hexInput ui-widget'));
 
-           if (this_element.options.spinner) {
+           if (this_element.options.spinner && (this_element.options.digits < 15)) {
             var maxes = new Array(this.options.digits);
             for (var i = 0; i < maxes.length; i++) maxes[i] = 'f';
             var this_max = parseInt('0x' + maxes.join(''));
