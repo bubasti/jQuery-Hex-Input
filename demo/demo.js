@@ -1,3 +1,4 @@
+$(document).ready(function() {
   $('#hex-input1').hexInput({
     value: 'f',
     digits: 2,
@@ -42,3 +43,4 @@
       console.log('changed');
     },
   });
+});
