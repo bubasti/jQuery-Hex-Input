@@ -24,3 +24,4 @@ Hex Exploding Input is a jQuery Widget Factory plugin with Themeroller support.
      Cannot override 'max', which is determined by 'digits'
 
 Demo located [here](http://dl.dropbox.com/u/21019978/jQuery-Hex-Input/example.html).
+Demo located [here](http://jsfiddle.net/gh/get/jquery/1.8.3/hurgleburgler/jQuery-Hex-Input/tree/master/demo/).
