@@ -3,8 +3,5 @@
  description: Facilitates setting 
  authors:
    - Diana Whitten
- resources:
-   - https://rawgithub.com/hurgleburgler/jQuery-Hex-Input/master/jquery.ui.hex_input.js
-   - https://rawgithub.com/hurgleburgler/hurgleburgler.github.io/master/stylesheets/styles.css
  normalize_css: no
  ...
