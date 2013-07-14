@@ -6,7 +6,6 @@
  resources:
    - /jquery.ui.hex_input.js
    - /jquery.ui.hex_input.css
-   - http://code.jquery.com/jquery-1.8.3.js
    - http://code.jquery.com/ui/1.9.2/jquery-ui.js
    - http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css
    - https://raw.github.com/hurgleburgler/jQuery-Hex-Input/master/jquery.ui.hex_input.js
