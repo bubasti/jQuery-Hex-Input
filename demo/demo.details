@@ -4,8 +4,6 @@
  authors:
    - Diana Whitten
  resources:
-   - http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css
    - https://raw.github.com/hurgleburgler/jQuery-Hex-Input/master/jquery.ui.hex_input.js
-   - https://raw.github.com/hurgleburgler/jQuery-Hex-Input/master/jquery.ui.hex_input.css
- normalize_css: yes
+ normalize_css: no
  ...
