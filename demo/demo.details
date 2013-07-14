@@ -1,0 +1,13 @@
+---
+ name: Demo of the jQuery UI Hex Input Widget
+ description: Facilitates setting 
+ authors:
+   - Diana Whitten
+ resources:
+   - /jquery.ui.hex_input.js
+   - /jquery.ui.hex_input.css
+   - http://code.jquery.com/jquery-1.8.3.js
+   - http://code.jquery.com/ui/1.9.2/jquery-ui.js
+   - http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css
+ normalize_css: no
+ ...
