@@ -3,9 +3,8 @@
  description: Facilitates setting 
  authors:
    - Diana Whitten
- dependencies:
-   - ui
  resources:
+   - http://code.jquery.com/ui/1.9.2/jquery-ui.js
    - http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css
    - /hurgleburgler/jQuery-Hex-Input/master/jquery.ui.hex_input.js
    - /hurgleburgler/jQuery-Hex-Input/master/jquery.ui.hex_input.css
