@@ -4,7 +4,7 @@
  authors:
    - Diana Whitten
  resources:
-   - https://raw.github.com/hurgleburgler/jQuery-Hex-Input/master/jquery.ui.hex_input.js
-   - https://raw.github.com/hurgleburgler/hurgleburgler.github.io/master/stylesheets/styles.css
+   - https://rawgithub.com/hurgleburgler/jQuery-Hex-Input/master/jquery.ui.hex_input.js
+   - https://rawgithub.com/hurgleburgler/hurgleburgler.github.io/master/stylesheets/styles.css
  normalize_css: no
  ...
