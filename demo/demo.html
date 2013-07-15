@@ -1,62 +1,33 @@
-<style>
-  div.input-wrapper {
-    margin: 10px;
-    padding: 5px;
-  }
-</style>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-<script>
-  $(document).ready(function() {
-    $('#hex-input1').hexInput({
-      value: 'f',
-      digits: 2,
-      zero_based: false,
-      spinner: false,
-    });
-  
-    $('#hex-input2').hexInput({
-      value: '0xf',
-      digits: 6,
-      spinner: true,
-      spinner_opts: {
-        spin: function(e) {
-          console.log('Spin!');
-        },
-      }
-    });
-  
-    $('#hex-input3').hexInput({
-      value: '0xb00b1e',
-      digits: 14,
-      spinner: false,
-    });
-  
-  
-    $('#hex-input4').hexInput({
-      value: '0x123456789abcde',
-      digits: 18,
-      spinner: true,
-    });
-  
-    $('#hex-input5').hexInput({
-      value: '0x123456789abcde',
-      digits: 26,
-      spinner: false,
-    });
-  
-    $('#hex-input6').hexInput({
-      value: 'fffffff',
-      spinner: true,
-      onChange: function(e) {
-        console.log('changed');
-      },
-    });
-  });
-</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" media="screen" />
 
-<div class='input-wrapper'><input type='text' id='hex-input1' /></div>
-<div class='input-wrapper'><input type='text' id='hex-input2' /></div>
-<div class='input-wrapper'><input type='text' id='hex-input3' /></div>
-<div class='input-wrapper'><input type='text' id='hex-input4' /></div>
-<div class='input-wrapper'><input type='text' id='hex-input5' /></div>
-<div class='input-wrapper'><input type='text' id='hex-input6' /></div>
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+
+    <link rel="stylesheet" type="text/css" href="demo/demo.css" media="screen" />
+    <script src="demo/demo.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>jQuery-Hex-Input by hurgleburgler</title>
+  </head>
+
+  <body>
+    <div class='input-wrapper'><input type='text' id='hex-input1' /></div>
+    <div class='input-wrapper'><input type='text' id='hex-input2' /></div>
+    <div class='input-wrapper'><input type='text' id='hex-input3' /></div>
+    <div class='input-wrapper'><input type='text' id='hex-input4' /></div>
+    <div class='input-wrapper'><input type='text' id='hex-input5' /></div>
+    <div class='input-wrapper'><input type='text' id='hex-input6' /></div>
+  </body>
+</html>
